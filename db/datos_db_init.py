@@ -1,5 +1,8 @@
 from sqlalchemy import *
 
+engine = create_engine('postgresql://localhost/datos')
+
+
 metadata = MetaData()
 
 
@@ -13,7 +16,7 @@ clusters = Table('clusters', metadata,
    Column('dns_subdomain', String(256), nullable=False)
 )
 
-environments = Table('environment', metadata,
+environments = Table('environments', metadata,
    Column('environment_id', Integer, primary_key=True),
    Column('environment_name', String(256), nullable=False)
 )
@@ -70,3 +73,5 @@ clusters_esx_clusters_ref = Table('clusters_esx_clusters_ref', metadata,
    Column('clusters', Integer, ForeignKey("clusters.cluster_id")),
    Column('esx_clusters', Integer, ForeignKey("esx_clusters.esx_cluster_id"))
 )
+
+metadata.create_all(engine)
