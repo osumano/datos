@@ -1,7 +1,5 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from datos.app import app
-
+from datos import app
 
 db = SQLAlchemy(app)
 
@@ -20,6 +18,8 @@ class Cluster(db.Model):
 
     def __repr__(self):
         return '<Cluster %r>' % self.name
+
+
 
 class Node(db.Model):
     id = db.Column(db.Integer, primary_key=True)
