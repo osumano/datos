@@ -13,6 +13,10 @@ psql -d datos
 
 
 ## Datos setup
-git clone ...
+git clone https://github.com/osumano/datos.git
+(create a virtualenv - best practice)
 
 pip install -r requirements.txt
+
+python db_init.py
+
