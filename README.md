@@ -1,7 +1,7 @@
-# Datos
+# DATOS
 
 
-## Mac Installation instructions
+## MAC INSTALLATION INSTRUCTIONS
 
 brew install postgresql  
 
@@ -12,7 +12,7 @@ createdb datos
 psql -d datos
 
 
-## Datos setup
+##  SETUP
 git clone https://github.com/osumano/datos.git
 (create a virtualenv - best practice)
 
