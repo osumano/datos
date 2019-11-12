@@ -8,8 +8,7 @@ cluster = api.model('clusters', {
     'name': fields.String(required=True, description='cluster name'),
     'asset': fields.String(required=True, description='asset name for this cluster'),
     'control_plane_label': fields.String(required=True, description='control plane label - used for automation'),
-    'dns_subdomain': fields.String(description='dns_subdomain field for clusters'),
-    'node_id': fields.Integer(required=True, description='reference for ForeignKey')
+    'dns_subdomain': fields.String(description='dns_subdomain field for clusters')
 
 })
 @api.route('/')

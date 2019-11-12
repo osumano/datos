@@ -10,11 +10,6 @@ class Cluster(db.Model):
     asset = db.Column(db.String(256), nullable=False)
     control_plane_label = db.Column(db.String(256), nullable=False)
     dns_subdomain = db.Column(db.String(256), nullable=False)
-    node_id = db.Column(db.Integer, db.ForeignKey('node.id'),
-       nullable=False)
-
-    node = db.relationship('Node',
-        backref=db.backref('clusters', lazy=True))
 
     def __repr__(self):
         return "<Cluster '{}'>".format(self.name)
@@ -26,5 +21,12 @@ class Node(db.Model):
     name = db.Column(db.String(250), nullable=False)
     hostname = db.Column(db.String(250), nullable=False)
 
+    cluster_id = db.Column(db.Integer, db.ForeignKey('cluster.id'),
+       nullable=False)
+
+    cluster = db.relationship('Cluster',
+        backref=db.backref('nodes', lazy=True))
+
+
     def __repr__(self):
-        return '<Node %r>' % self.name
+        return "<Node '{}'>".format(self.name)
