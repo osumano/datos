@@ -17,7 +17,7 @@ class Cluster(db.Model):
         backref=db.backref('clusters', lazy=True))
 
     def __repr__(self):
-        return '<Cluster %r>' % self.name
+        return "<Cluster '{}'>".format(self.name)
 
 
 
