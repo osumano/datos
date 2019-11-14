@@ -23,6 +23,7 @@ python db_init.py
 export PYTHONPATH=.:../
 
 FLASK_APP=app.py
+
 FLASK_ENV=development
 
 flask run
