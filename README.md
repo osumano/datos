@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 python db_init.py
 
-export PYTHONPATH=.:../
+export PYTHONPATH='.:../'
 
 FLASK_APP=app.py
 
