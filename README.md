@@ -15,7 +15,7 @@ psql -d datos
 ##  SETUP
 git clone https://github.com/osumano/datos.git
 (create a virtualenv - best practice)
-
+```
 pip install -r requirements.txt
 
 python db_init.py
@@ -27,3 +27,4 @@ FLASK_APP=app.py
 FLASK_ENV=development
 
 flask run
+```
