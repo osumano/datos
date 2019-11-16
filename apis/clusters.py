@@ -12,9 +12,22 @@ cluster = api.model('clusters', {
 
 })
 @api.route('/')
-class ClustersList(Resource):
+class ClusterList(Resource):
     @api.doc('List all clusters')
     @api.marshal_with(cluster)
     def get(self):
         '''List all clusters'''
         return Cluster.query.all()
+
+
+
+@api.route('/<name>')
+@api.response(404, 'Cluster not found')
+@api.param('name', 'The cluster identifier')
+class ClusterGet(Resource):
+    '''Show a single cluster record and lets you delete them'''
+    @api.doc('List a cluster by name')
+    @api.marshal_with(cluster)
+    def get(self, name):
+        '''List a cluster by name '''
+        return Cluster.query.filter_by(name=name).first_or_404()
