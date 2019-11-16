@@ -1,6 +1,14 @@
 # DATOS
 
 
+Datos is a simple CMDB that can be used to keep reference data about infrastructure. 
+
+Technology Stack 
+- Flask-RestPlus
+- SQLAlchemy 
+- Postgres
+
+
 ## MAC INSTALLATION INSTRUCTIONS
 ```
 brew install postgresql  
