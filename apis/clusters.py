@@ -1,5 +1,6 @@
 from flask_restplus import Namespace, Resource, fields
-from database.models import Cluster
+from flask import request
+from database.models import Cluster, db
 
 api = Namespace('clusters', description='Cluster operations')
 
@@ -19,7 +20,30 @@ class ClusterList(Resource):
         '''List all clusters'''
         return Cluster.query.all()
 
+    @api.doc('create_todo')
+    @api.expect(cluster)
+    @api.marshal_with(cluster, skip_none=True)
+    def post(self):
+        '''Create a new cluster'''
+        req_data = request.get_json()
+        required = ['name', 'asset', 'control_plane_label', 'dns_subdomain']
+        if not all(value in req_data for value in required):
+            return 'Missing values', 400
+        n_name = req_data['name']
+        n_asset = req_data['asset']
+        n_control_plane_label = req_data['control_plane_label']
+        n_dns_subdomain = req_data['dns_subdomain']
+        check_cluster = Cluster.query.filter_by(name=n_name).first()
+        if None  in (n_name, n_asset, n_control_plane_label, n_dns_subdomain):
+            return None, 422
 
+        if check_cluster:
+            return None, 409
+        else:
+            new_cluster = Cluster(name=n_name, asset=n_asset, control_plane_label=n_control_plane_label, dns_subdomain=n_dns_subdomain )
+            db.session.add(new_cluster)
+            db.session.commit()
+            return req_data, 201
 
 @api.route('/<name>')
 @api.response(404, 'Cluster not found')

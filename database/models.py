@@ -6,7 +6,7 @@ db = SQLAlchemy(app)
 
 class Cluster(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), nullable=False)
+    name = db.Column(db.String(256), unique=True, nullable=False)
     asset = db.Column(db.String(256), nullable=False)
     control_plane_label = db.Column(db.String(256), nullable=False)
     dns_subdomain = db.Column(db.String(256), nullable=False)
