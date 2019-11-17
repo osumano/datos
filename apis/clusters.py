@@ -1,6 +1,7 @@
 from flask_restplus import Namespace, Resource, fields
 from flask import request
 from database.models import Cluster, db
+from sqlalchemy import exc
 
 api = Namespace('clusters', description='Cluster operations')
 
@@ -12,6 +13,7 @@ cluster = api.model('clusters', {
     'dns_subdomain': fields.String(description='dns_subdomain field for clusters')
 
 })
+#POST & GET
 @api.route('/')
 class ClusterList(Resource):
     @api.doc('List all clusters')
@@ -45,6 +47,7 @@ class ClusterList(Resource):
             db.session.commit()
             return req_data, 201
 
+#GET by cluster name and DELETE by cluster name
 @api.route('/<name>')
 @api.response(404, 'Cluster not found')
 @api.param('name', 'The cluster identifier')
@@ -55,3 +58,18 @@ class ClusterGet(Resource):
     def get(self, name):
         '''List a cluster by name '''
         return Cluster.query.filter_by(name=name).first_or_404()
+
+    @api.doc('Delete cluster record')
+    @api.marshal_with(cluster, skip_none=True)
+    @api.response(204, 'Cluster record deleted')
+    def delete(self, name):
+        '''Delete a cluster by name'''
+        d_cluster = Cluster.query.filter_by(name=name).first_or_404()
+
+        try:
+           db.session.delete(d_cluster)
+           db.session.commit()
+        except exc.IntegrityError:
+           db.session().rollback()
+           return None, 500
+        return '', 204
