@@ -14,7 +14,7 @@ def client():
 
 def test_GET_clusters(client):
        """ Get test for /clusters"""
-       print("'GET method test for /clusters'")
+       print("\n'GET method test for /clusters'")
        response = client.get('/clusters/')
        assert  b'cluster1' in response.data
 
@@ -26,8 +26,11 @@ def test_POST_clusters():
             'name':  m_date, 'asset': 'datostest', 'control_plane_label': 'datostest', 'dns_subdomain': 'datostest.mydomain.com'
         })
         json_data = rv.get_json()
-        print("'POST method test for /clusters'")
-        print(json_data['name'])
-        print(json_data)
-
+        print("\n'POST method test for /clusters'")
         assert (json_data['name'] == m_date )
+
+def test_GET_cluster_byname(client):
+       """ Get test for /clusters/<name>"""
+       print("\nGET method test for /clusters/" + m_date)
+       response = client.get('/clusters/' + m_date )
+       assert m_date.encode()  in response.data
