@@ -1,7 +1,7 @@
 # DATOS
 
 
-Datos is a simple CMDB that can be used to store infrastructure reference data.  
+Datos is a simple CMDB that can be used to store infrastructure reference data.  This can be used to help you get started developing a CMDB and can be easily expanded to fit your needs. 
 
 Technology Stack 
 - Flask-RestPlus
@@ -27,13 +27,13 @@ git clone https://github.com/osumano/datos.git
 ```
 pip install -r requirements.txt
 
-python db_init.py
-
 export PYTHONPATH='.:../'
 
 FLASK_APP=app.py
 
 FLASK_ENV=development
+
+python db_init.py
 
 flask run
 ```
