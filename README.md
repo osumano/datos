@@ -9,8 +9,9 @@ Technology Stack
 - Postgres
 
 
-## MAC INSTALLATION INSTRUCTIONS
-### Postgres installation
+## Postgres installation
+
+### MAC instructions
 ```
 brew install postgresql  
 
@@ -21,7 +22,11 @@ createdb datos
 psql -d datos
 ```
 
-###  Application setup
+Follow operating system specific instructions for your environment. 
+
+Update config.py with the correct database endpoint information if not running on localhost. 
+
+##  Application setup
 git clone https://github.com/osumano/datos.git
 (create a virtualenv - best practice)
 ```
