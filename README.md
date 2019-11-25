@@ -44,4 +44,4 @@ flask run
 ```
 
 ## REST calls
-![Screenshot](../images/GET.png)
+![Screenshot](images/GET.png)
