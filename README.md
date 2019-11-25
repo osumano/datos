@@ -43,5 +43,5 @@ python db_init.py
 flask run
 ```
 
-## REST calls 
-![Screenshot](../blob/master/images/GET.png)
+## REST calls
+![Screenshot](../images/GET.png)
