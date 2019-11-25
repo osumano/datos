@@ -44,4 +44,20 @@ flask run
 ```
 
 ## REST calls
+Swagger URL http://yoururl:5000/api/v1/
+
+### GET /clusters
 ![Screenshot](images/GET.png)
+
+### GET /cluster1
+![Screenshot](images/GET_cluster1.png)
+
+### POST /cluster
+![Screenshot](images/POST.png)
+
+
+### PUT  /cluster
+![Screenshot](images/update.png)
+
+### JSON file example
+![Screenshot](images/cat_json.png)
