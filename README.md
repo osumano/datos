@@ -43,6 +43,13 @@ python db_init.py
 flask run
 ```
 
+## Execute Unit Tests
+
+```
+pytest --disable-warnings -s
+
+```
+
 ## REST calls
 Swagger URL http://yoururl:5000/api/v1/
 

@@ -34,3 +34,18 @@ def test_GET_cluster_byname(client):
        print("\nGET method test for /clusters/" + m_date)
        response = client.get('/clusters/' + m_date )
        assert m_date.encode()  in response.data
+
+def test_PUT_clusters():
+    with app.test_client() as c:
+        rv = c.put('/clusters/', json={
+            'name':  m_date, 'asset': 'datostest-update', 'control_plane_label': 'datostest', 'dns_subdomain': 'datostest.mydomain.com'
+        })
+        json_data = rv.get_json()
+        print("\n'PUT method test for /clusters/'")
+        assert (json_data['name'] == m_date )
+
+def test_DELETE_clusters(client):
+        """ DELETE test for /clusters/<name>"""
+        print("\nDELETE method test for /clusters/" + m_date)
+        response = client.delete('/clusters/' + m_date )
+        assert response.status_code == 204
