@@ -1,6 +1,7 @@
 flask
 flask_restplus
-psycopg2 # please note, for mac you may need to install the binary. pip install psycopg2-binary due to errors.
+#psycopg2 
+psycopg2-binary # was not building on mac. uncomment for other operating systems
 Flask-SQLAlchemy
 pytest
 sqlalchemy
