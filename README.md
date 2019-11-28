@@ -29,7 +29,10 @@ Update config.py with the correct database endpoint information if not running o
 ##  Application setup
 git clone https://github.com/osumano/datos.git
 (create a virtualenv - best practice)
+
 ```
+cd datos
+
 pip install -r requirements.txt
 
 export PYTHONPATH='.:../'
