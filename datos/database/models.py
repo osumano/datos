@@ -20,6 +20,7 @@ class Node(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     hostname = db.Column(db.String(250), nullable=False)
+    machinetype = db.Column(db.String(250), nullable=False)
 
     cluster_id = db.Column(db.Integer, db.ForeignKey('cluster.id'),
        nullable=False)
