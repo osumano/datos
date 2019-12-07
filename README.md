@@ -8,6 +8,14 @@ Technology Stack
 - SQLAlchemy
 - Postgres
 
+## Current Functionality
+
+Supports two endpoints at the moment ( Clusters and Nodes ). 
+
+- Able to add, delete, list and update  clusters
+- Able to add, delete, list and update  Nodes. A node must have a cluster reference. 
+
+
 
 ## Postgres installation
 
@@ -53,7 +61,8 @@ pytest --disable-warnings -s
 
 ```
 
-## REST calls
+
+## Example REST calls
 Swagger URL http://yoururl:5000/api/v1/
 
 ### GET /api/v1/clusters
