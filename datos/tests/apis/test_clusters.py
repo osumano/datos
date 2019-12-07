@@ -44,7 +44,7 @@ def test_PUT_clusters():
         print("\n'PUT method test for /clusters/'")
         assert (json_data['name'] == m_date )
 
-def test_DELETE_clusters(client):
+def test_DELETE_cluster_byname(client):
         """ DELETE test for /clusters/<name>"""
         print("\nDELETE method test for /clusters/" + m_date)
         response = client.delete('/clusters/' + m_date )
