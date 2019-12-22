@@ -1,6 +1,6 @@
 import os
 
-#postgres_local_base = os.environ['DATABASE_URL']
+postgres_db_env = os.environ['DATABASE_URL']
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,9 +10,14 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/datos'
+    SQLALCHEMY_DATABASE_URI = postgres_db_env
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+class DevelopmentConfigDocker(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = postgres_db_env
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
     DEBUG = False
-    #SQLALCHEMY_DATABASE_URI = postgres_local_base
+    SQLALCHEMY_DATABASE_URI = postgres_db_env
